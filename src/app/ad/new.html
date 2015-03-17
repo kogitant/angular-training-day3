@@ -1,0 +1,35 @@
+<div class="container">
+
+  <div ng-include="'components/navbar/navbar.html'"></div>
+
+  <h1>New Ad</h1>
+  <form name="adForm" ng-controller="AdFormController" ng-submit="submit()">
+      <label>Title</label>
+      <input type="text" name="title" ng-model="ad.title"/><br/>
+      <label>Price (€)</label>
+      <input type="text" name="priceCents" ng-model="ad.priceCents"/><br/>
+      <label>Description</label>
+      <input type="text" name="description" ng-model="ad.description"/>
+      <br/>
+
+      <label>Phone</label>
+      <input type="text" name="phone" ng-model="ad.phone"/><br/>
+      <label>Email</label>
+      <input type="text" name="email" ng-model="ad.email"/><br/>
+      <br/>
+
+      <div ng-if="ad.imageUploaded">
+          <img class="thumbnail" ng-src="{{ad.thumbnailUrl}}"/>
+      </div>
+      <input type="submit">
+
+  </form>
+
+    <div ng-if="!ad.imageUploaded">
+        <form name="imageForm" ng-controller="ImageFormController" ng-submit="submitImage()">
+            <input type="file" file-model="myFile"/>
+            <input type="submit">
+        </form>
+    </div>
+
+</div>

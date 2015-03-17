@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div ng-include="'components/navbar/navbar.html'"></div>
+
+  <h1>Ads</h1>
+  Search: <input ng-model="searchText">
+  <br/>
+  <div ng-repeat="ad in ads | filter:searchText | orderBy:'-id'" class="ad" ng-click="edit(ad)">
+      <span class="title" ng-bind="ad.title"></span>
+      <img class="thumbnail" ng-show="ad.thumbnailUrl" ng-src="{{ad.thumbnailUrl}}" width="250" height="250"/>
+      <!--
+      <pre>{{ad || json}}</pre>
+      -->
+      <span class="description" ng-bind="ad.description"></span>
+      <span class="price">{{ad.priceCents | currency:"EUR"}}</span>
+      <br/>
+      <span class="phone" ng-bind="ad.phone"></span>
+      <span class="email" ng-bind="ad.email"></span>
+
+  </div>
+
+</div>
